@@ -11,6 +11,7 @@ function countUniqueValues(arr) {
     }
   }
 
+  // this allows empty arrays to work, or else i + 1 would work
   return arr.slice(0, i + 1).length
 }
 
