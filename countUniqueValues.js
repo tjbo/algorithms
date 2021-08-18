@@ -2,19 +2,16 @@
 // both these pointers start at start but could start anywhere depending on what you are doing
 // assume input is always sorted
 function countUniqueValues(arr) {
-  let leftPointerIndex = 0
-  let rightPointerIndex = 1
+  let i = 0
 
-  while (rightPointerIndex < arr.length) {
-    if (arr[leftPointerIndex] === arr[rightPointerIndex]) {
-      arr.splice(leftPointerIndex, 1)
-    } else {
-      leftPointerIndex = rightPointerIndex
-      rightPointerIndex++
+  for (let j = 1; j < arr.length; j++) {
+    if (arr[i] !== arr[j]) {
+      i++
+      arr[i] = arr[j]
     }
   }
 
-  return arr.length
+  return arr.slice(0, i + 1).length
 }
 
 console.log(countUniqueValues([1, 1, 1, 1, 1, 1, 2])) // returns 2

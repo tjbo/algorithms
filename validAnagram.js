@@ -4,7 +4,6 @@ function validAnagram(str1, str2) {
     return false
   }
 
-  let str1FrequencyCounter = {}
   let str2FrequencyCounter = {}
 
   for (let key of str1) {
