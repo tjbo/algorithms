@@ -1,5 +1,5 @@
 // accepts a sorted array and a value
-// use 2 pointers
+// uses  2 pointers
 
 function binarySearch(arr, val, leftCursorIndex, rightCursorIndex) {
   rightCursorIndex = rightCursorIndex || arr.length
