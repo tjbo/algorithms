@@ -2,17 +2,12 @@
 // builds up sort by gradually creating a sorted half
 // good for use if you were gradually getting numbers over a network and
 // or other async situations where you need to maintain a sorted half
+const swap = require('./swap')
 
 const list = [
   5, 2, 6, 3, 97, 76, 33, 44, 22, 11, 3, 4, 8, 111, 333, 444, 222, 666, 999,
   888, 777,
 ]
-
-function swap(arr, idx1, idx2) {
-  let temp = arr[idx1]
-  arr[idx1] = arr[idx2]
-  arr[idx2] = temp
-}
 
 function sortInsertion(arr) {
   let currentIndex = null
