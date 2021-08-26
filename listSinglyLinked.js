@@ -12,6 +12,24 @@ class SinglyLinkedList {
     this.length = 0
   }
 
+  insert(index, val) {
+    if (index > this.length || index < 0) {
+      return
+    }
+
+    if (index === this.length) {
+      return !!this.push(val)
+    } else if (index === 0) {
+      return !!this.unshift(val)
+    }
+
+    const newNode = new Node(val)
+    const prevNode = this.get(index - 1)
+    newNode.next = prevNode.next
+    prevNode.next = newNode
+    return true
+  }
+
   pop() {
     let currentNode = this.head
 
@@ -53,6 +71,29 @@ class SinglyLinkedList {
     return this
   }
 
+  remove(index) {
+    if (index > this.length || index < 0) {
+      return false
+    }
+
+    if (index === 0) {
+      return !!this.shift()
+    }
+
+    if (index === this.length) {
+      return !!this.pop()
+    }
+
+    const prevNode = this.get(index - 1)
+    const removedNode = prevNode.next
+
+    prevNode.next = removedNode.next
+
+    this.length--
+
+    return true
+  }
+
   shift() {
     const removedNode = this.head
     this.head = this.head.next
@@ -71,11 +112,39 @@ class SinglyLinkedList {
 
     if (!this.head) {
       this.tail = newNode
+    } else {
+      newNode.next = this.head
     }
-    newNode.next = this.head
+
     this.head = newNode
     this.length++
     return this
+  }
+
+  get(index) {
+    if (index >= this.length || index < 0) {
+      return
+    }
+
+    let nextNode = this.head
+    let currentIndex = 0
+
+    while (currentIndex < index && nextNode.next) {
+      nextNode = nextNode.next
+      currentIndex++
+    }
+    return nextNode
+  }
+
+  set(val, index) {
+    const currentNode = this.get(index)
+
+    if (!currentNode) {
+      return false
+    }
+
+    currentNode.val = val
+    return true
   }
 }
 
@@ -84,8 +153,11 @@ const list = new SinglyLinkedList()
 list.push('one')
 list.push('two')
 list.push('three')
-list.unshift('zero')
-list.unshift('minus one')
-list.unshift('minus two')
+list.push('four')
+list.push('five')
+list.push('siz')
+list.push('seven')
 
-console.log(list)
+list.insert(2, 'three bbbb')
+
+console.log(list.get(0))
