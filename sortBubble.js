@@ -1,4 +1,6 @@
+// bubble sort
 // sorts items by bubbling up the larger items to the top
+
 const list = [1, 2, 6, 99, 97, 76, 33, 44, 22, 11, 3, 4]
 
 function swap(arr, idx1, idx2) {

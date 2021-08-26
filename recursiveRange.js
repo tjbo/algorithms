@@ -1,6 +1,5 @@
-// SAMPLE INPUT/OUTPUT
-// recursiveRange(6) // 21
-// recursiveRange(10) // 55
+// recursive range
+// adds together all numbers in a number
 
 function recursiveRange(num) {
   if (num <= 1) {
@@ -10,4 +9,5 @@ function recursiveRange(num) {
   return num + recursiveRange(--num)
 }
 
-console.log(recursiveRange(6)) // 21
+recursiveRange(6) // 21
+recursiveRange(10) // 55

@@ -1,4 +1,5 @@
 // frequency counter pattern
+// no nested loops meaning this function is O(N)
 function validAnagram(str1, str2) {
   if (str1.length !== str2.length) {
     return false
@@ -14,7 +15,6 @@ function validAnagram(str1, str2) {
     str2FrequencyCounter[key] = (str2FrequencyCounter[key] || 0) + 1
   }
 
-  // 2nd loops is not nested meaning this function is O(N)
   for (let key in str1FrequencyCounter) {
     if (str1FrequencyCounter[key] !== str2FrequencyCounter[key]) {
       return false

@@ -1,4 +1,8 @@
-// takes 2 sorted arrays and returns a new merge sorted array
+// merge sort
+// merge sort breaks apart arrays into length of one than reassembles
+// it takes advantage of the fact that when you merge an array
+// it is auto sorted
+
 function mergeArrays(arr1, arr2) {
   let newArray = []
   let cursor1 = 0

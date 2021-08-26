@@ -1,6 +1,7 @@
+// insertion sort
 // builds up sort by gradually creating a sorted half
 // good for use if you were gradually getting numbers over a network and
-// needed to maintain a sorted half
+// or other async situations where you need to maintain a sorted half
 
 const list = [
   5, 2, 6, 3, 97, 76, 33, 44, 22, 11, 3, 4, 8, 111, 333, 444, 222, 666, 999,

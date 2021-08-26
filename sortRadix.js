@@ -1,6 +1,8 @@
-// radix sort doesn't compare numbers but instead groups them
-// by their last number, than repeats this process for all digits
-// in a number
+// radix sort
+// radix sort is interesting because it doesn't use a comparator
+// instead it puts numbers in a bucket based on their last digit
+// then re-assembles the array and repeats the process
+// until no digits left
 
 function reverseString(str) {
   const splitString = str.split('')

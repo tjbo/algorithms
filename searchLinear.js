@@ -1,3 +1,6 @@
+// linear search
+// simple and slow
+
 function linearSearch(arr, num) {
   for (let val in arr) {
     if (arr[val] === num) {

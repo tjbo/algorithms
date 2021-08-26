@@ -1,5 +1,4 @@
-// productOfArray([1,2,3]) // 6
-// productOfArray([1,2,3,10]) // 60
+// multiplies all numbers in an array
 
 function productOfArray(arr) {
   if (arr.length === 1) {
@@ -12,4 +11,5 @@ function productOfArray(arr) {
   return productOfArray(arr)
 }
 
-// console.log(productOfArray([1, 2, 3])) // 60
+productOfArray([1, 2, 3]) // 60
+productOfArray([1, 2, 3]) // 6

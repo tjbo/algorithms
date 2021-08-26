@@ -1,3 +1,8 @@
+// singly linked data structure
+// useful when you need high-speed push, pop and rotate
+// and don't mind O(n) indexing
+// great for performance in unique situations
+
 class Node {
   constructor(val) {
     this.val = val
@@ -94,6 +99,28 @@ class SinglyLinkedList {
     return true
   }
 
+  reverse() {
+    let i = 0
+    let current = this.head
+    this.head = this.tail
+    this.tail = current
+    let prev = current
+    current = current.next
+    let next = current.next
+    this.tail.next = null
+
+    while (i < this.length - 1) {
+      current.next = prev
+      prev = current
+
+      if (next) {
+        current = next
+        next = current.next
+      }
+      i++
+    }
+  }
+
   shift() {
     const removedNode = this.head
     this.head = this.head.next
@@ -155,9 +182,6 @@ list.push('two')
 list.push('three')
 list.push('four')
 list.push('five')
-list.push('siz')
+list.push('six')
 list.push('seven')
-
-list.insert(2, 'three bbbb')
-
-console.log(list.get(0))
+list.reverse()

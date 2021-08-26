@@ -1,6 +1,7 @@
 // multiple pointers pattern
-// both these pointers start at start but could start anywhere depending on what you are doing
-// assume input is always sorted
+// both these pointers start at start but could start anywhere
+// for this example assume input is always sorted
+
 function countUniqueValues(arr) {
   let i = 0
 
