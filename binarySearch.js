@@ -1,7 +1,7 @@
 // binary search
-// uses 2 pointers to divide and conquery by finding a middle value
-// thereby reducing the amount of search space to half
-// this example assumes sorted input
+// uses 2 pointers to divide and conquer by finding a middle value
+// thereby reducing the amount of search space to half on each iteration
+// assumes sorted input
 
 function binarySearch(arr, val, leftCursorIndex, rightCursorIndex) {
   rightCursorIndex = rightCursorIndex || arr.length

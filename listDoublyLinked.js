@@ -1,24 +1,52 @@
-// singly linked data structure
-// useful when you need high-speed push, pop and rotate
-// and don't mind O(N) indexing
-// great for performance in unique situations
+// doubly linked list
 // insertion O(1)
-// removal, depends O(1) or O(N)
-// searching O(N)
+// removal O(1)
+// searching O(N) *technically O(N/2)
 // access O(N)
 
 class Node {
   constructor(val) {
     this.val = val
     this.next = null
+    this.prev = null
   }
 }
 
-class SinglyLinkedList {
+class DoublyLinkedList {
   constructor() {
     this.head = null
     this.tail = null
     this.length = 0
+  }
+
+  get(index) {
+    if (index >= this.length || index < 0) {
+      return
+    }
+    let midPoint = Math.floor(this.length / 2)
+    let isSearchFromStart = !!(index <= midPoint)
+    let nextNode = isSearchFromStart ? this.head : this.tail
+    let currentIndex = isSearchFromStart ? 0 : this.length - 1
+
+    if (isSearchFromStart) {
+      while (currentIndex <= index) {
+        nextNode = nextNode.next
+        currentIndex++
+
+        if (index === currentIndex) {
+          return nextNode
+        }
+      }
+    } else {
+      while (currentIndex >= index) {
+        nextNode = nextNode.prev
+        currentIndex--
+        if (index === currentIndex) {
+          return nextNode
+        }
+      }
+      return nextNode
+    }
   }
 
   insert(index, val) {
@@ -34,25 +62,27 @@ class SinglyLinkedList {
 
     const newNode = new Node(val)
     const prevNode = this.get(index - 1)
-    newNode.next = prevNode.next
+    const nextNode = prevNode.next
+
+    newNode.next = nextNode
+    newNode.prev = prevNode
+
     prevNode.next = newNode
+    nextNode.prev = newNode
+
     return true
   }
 
   pop() {
-    let currentNode = this.head
+    let removeNode = this.tail
 
-    if (!currentNode) {
+    if (!removeNode) {
       return
     }
 
-    while (currentNode.next.next) {
-      currentNode = currentNode.next
-    }
+    this.tail = removeNode.prev
+    this.tail.next = null
 
-    const removedNode = currentNode.next
-    currentNode.next = null
-    this.tail = currentNode
     this.length--
 
     if (this.length === 0) {
@@ -60,7 +90,7 @@ class SinglyLinkedList {
       this.tail = null
     }
 
-    return removedNode
+    return removeNode
   }
 
   push(val) {
@@ -71,6 +101,7 @@ class SinglyLinkedList {
     }
 
     if (this.tail) {
+      newNode.prev = this.tail
       this.tail.next = newNode
     }
 
@@ -94,40 +125,30 @@ class SinglyLinkedList {
     }
 
     const prevNode = this.get(index - 1)
-    const removedNode = prevNode.next
-
-    prevNode.next = removedNode.next
+    const nextNode = prevNode.next.next
+    prevNode.next = nextNode
+    nextNode.prev = prevNode
 
     this.length--
 
     return true
   }
 
-  reverse() {
-    let i = 0
-    let current = this.head
-    this.head = this.tail
-    this.tail = current
-    let prev = current
-    current = current.next
-    let next = current.next
-    this.tail.next = null
+  set(val, index) {
+    const currentNode = this.get(index)
 
-    while (i < this.length - 1) {
-      current.next = prev
-      prev = current
-
-      if (next) {
-        current = next
-        next = current.next
-      }
-      i++
+    if (!currentNode) {
+      return false
     }
+
+    currentNode.val = val
+    return true
   }
 
   shift() {
     const removedNode = this.head
     this.head = this.head.next
+    this.head.prev = null
     this.length--
 
     if (this.length === 0) {
@@ -145,41 +166,16 @@ class SinglyLinkedList {
       this.tail = newNode
     } else {
       newNode.next = this.head
+      newNode.next.prev = newNode
     }
 
     this.head = newNode
     this.length++
     return this
   }
-
-  get(index) {
-    if (index >= this.length || index < 0) {
-      return
-    }
-
-    let nextNode = this.head
-    let currentIndex = 0
-
-    while (currentIndex < index && nextNode.next) {
-      nextNode = nextNode.next
-      currentIndex++
-    }
-    return nextNode
-  }
-
-  set(val, index) {
-    const currentNode = this.get(index)
-
-    if (!currentNode) {
-      return false
-    }
-
-    currentNode.val = val
-    return true
-  }
 }
 
-const list = new SinglyLinkedList()
+const list = new DoublyLinkedList()
 
 list.push('one')
 list.push('two')
@@ -188,4 +184,12 @@ list.push('four')
 list.push('five')
 list.push('six')
 list.push('seven')
-list.reverse()
+list.push('eight')
+list.push('nine')
+list.push('ten')
+list.push('eleven')
+list.push('twelve')
+
+const item = list.remove(3)
+
+debugger
