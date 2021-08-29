@@ -19,7 +19,7 @@ function bubbleSort(arr) {
       break
     }
   }
-  console.log(arr)
+  return arr
 }
 
 bubbleSort(list)

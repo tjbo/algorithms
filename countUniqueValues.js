@@ -16,7 +16,7 @@ function countUniqueValues(arr) {
   return arr.slice(0, i + 1).length
 }
 
-console.log(countUniqueValues([1, 1, 1, 1, 1, 1, 2])) // returns 2
-console.log(countUniqueValues([1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 4, 5, 6, 6, 7])) // returns 7
-console.log(countUniqueValues([])) // returns 0
-console.log(countUniqueValues([-3, -3, -2, -2, -1, 0])) // returns 4
+countUniqueValues([1, 1, 1, 1, 1, 1, 2]) // returns 2
+countUniqueValues([1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 4, 5, 6, 6, 7]) // returns 7
+countUniqueValues([]) // returns 0
+countUniqueValues([-3, -3, -2, -2, -1, 0]) // returns 4

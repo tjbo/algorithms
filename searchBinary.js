@@ -19,6 +19,4 @@ function binarySearch(arr, val, leftCursorIndex, rightCursorIndex) {
   return -1
 }
 
-console.log(
-  binarySearch([1, 2, 3, 5, 6, 7, 8, 9, 11, 33, 55, 666, 777, 888, 999], 888),
-)
+binarySearch([1, 2, 3, 5, 6, 7, 8, 9, 11, 33, 55, 666, 777, 888, 999], 888)

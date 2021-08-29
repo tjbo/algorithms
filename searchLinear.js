@@ -10,4 +10,4 @@ function linearSearch(arr, num) {
   return -1
 }
 
-console.log(linearSearch([15, 22, 3, 4, 55, 66, 7, 8, 9], 15))
+linearSearch([15, 22, 3, 4, 55, 66, 7, 8, 9], 15)

@@ -1,6 +1,6 @@
 // quick sort
 // quick sort uses a pivot index
-// then moves things values to left or right
+// then moves values to left or right of pivot
 // leaving them unsorted, but the index pivot is now sorted
 // it then repeats picking a new pivot index
 // until everything is sorted
@@ -30,4 +30,4 @@ function sortQuick(arr, left = 0, right = arr.length - 1) {
 }
 
 const arr = [4, 8, 7, 9, 1, 10, 2, 5, 3, 11]
-console.log(sortQuick(arr))
+sortQuick(arr)

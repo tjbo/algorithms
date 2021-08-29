@@ -24,8 +24,8 @@ function validAnagram(str1, str2) {
   return true
 }
 
-console.log(validAnagram('anagram', 'nagaram')) // true
-console.log(validAnagram('rat', 'car')) // false
-console.log(validAnagram('test', 'test5')) // false
-console.log(validAnagram('aaz', 'zza')) // false
-console.log(validAnagram('awesome', 'awesom')) // false
+validAnagram('anagram', 'nagaram') // true
+validAnagram('rat', 'car') // false
+validAnagram('test', 'test5') // false
+validAnagram('aaz', 'zza') // false
+validAnagram('awesome', 'awesom') // false
