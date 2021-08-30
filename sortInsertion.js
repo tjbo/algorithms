@@ -23,4 +23,4 @@ function sortInsertion(arr) {
   return arr
 }
 
-console.log(sortInsertion(list))
+sortInsertion(list)

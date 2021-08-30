@@ -32,3 +32,5 @@ function sortMerge(arr) {
 }
 
 const arr1 = [3, 4, 5, 2, 6, 8, 9, 11, 1]
+
+sortMerge(arr1)

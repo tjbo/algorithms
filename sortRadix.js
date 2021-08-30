@@ -48,4 +48,4 @@ function sortRadix(arr) {
   return arr
 }
 
-console.log(sortRadix([123, 3333, 444, 55, 66, 12345, 6789]))
+sortRadix([123, 3333, 444, 55, 66, 12345, 6789])

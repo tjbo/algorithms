@@ -20,4 +20,4 @@ function sortSelection(arr) {
   }
 }
 
-console.log(sortSelection(list))
+sortSelection(list)
