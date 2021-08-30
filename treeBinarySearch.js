@@ -92,20 +92,23 @@ class BinarySearchTree {
     return values
   }
 
-  searchDepth(preOrder = true) {
+  searchDepth(preOrder = true, inOrder = false) {
     const values = []
 
     function traverse(node) {
-      preOrder && values.push(node.value)
+      preOrder && !inOrder && values.push(node.value)
 
       if (node.left) {
         traverse(node.left)
       }
 
+      inOrder && values.push(node.value)
+
       if (node.right) {
         traverse(node.right)
       }
-      !preOrder && values.push(node.value)
+
+      !preOrder && !inOrder && values.push(node.value)
     }
 
     traverse(this.root)
@@ -127,11 +130,11 @@ tree.insert(11)
 tree.insert(1)
 tree.insert(2)
 
-//                  10
-//          6                   14
-//   1          7           11      15
-//      2           8                   16
-//                                          24
+//                        10
+//          6                        14
+//   1          7                11      15
+//      2           8                        16
+//                                               24
 
 const search1 = tree.searchBreadth()
 console.log(search1)
@@ -144,3 +147,17 @@ console.log(search2)
 const search3 = tree.searchDepth(false)
 console.log(search3)
 // 2, 1, 8, 7, 6, 11, 24, 16, 15, 14, 10
+
+const search4 = tree.searchDepth(false, true)
+console.log(search4)
+// 1, 2, 6, 7, 8, 10, 11, 14, 15, 16, 24
+
+// breadth vs depth search
+// depends on the tree
+// they both have same time complexity (visit each node once)
+// breadth has larger space complexity on wider tree
+// wheres on a very deep tree depth will have higher space complexity
+
+// preOrder vs postOrder vs inOrder
+// inOrder is a good sort orde
+// preOrder would be possible to re-create a tree as it was created
