@@ -7,7 +7,7 @@
 
 class Node {
   constructor(val) {
-    this.val = val
+    this.value = val
     this.next = null
   }
 }
@@ -23,9 +23,12 @@ class Queue {
       return
     }
 
+    const removedNode = this.head
+
     this.head = this.head.next
     this.length--
-    return this.head
+
+    return removedNode
   }
 
   enqueue(val) {
@@ -51,4 +54,4 @@ q.enqueue(3)
 
 q.dequeue()
 
-debugger
+module.exports = Queue
