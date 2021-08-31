@@ -7,7 +7,6 @@
 // always filled in first
 // these types of heaps are often used for priority queue
 // and graph traversal algorithims
-
 const swap = require('./swap')
 
 class MaxBinaryHeap {
@@ -77,15 +76,17 @@ class MaxBinaryHeap {
   }
 
   extractMax() {
+    if (!this.values.length) {
+      return false
+    }
+
     const max = this.values.shift()
     if (this.values.length > 0) {
       const newMax = this.values.pop()
       this.values.unshift(newMax)
-
       this.sinkDown(0)
-
-      return max
     }
+    return max
   }
 }
 
