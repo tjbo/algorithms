@@ -12,34 +12,92 @@ const swap = require('./swap')
 
 class MaxBinaryHeap {
   constructor() {
-    this.values = [41, 39, 33, 18, 27, 12]
+    this.values = [888, 56, 39, 33, 18, 27, 12]
   }
 
-  // add value to end of array
-  // bubble vale up based on if is bigger than parent
+  // bubble value up based on if is bigger than parent
+  bubbleUp(index) {
+    const parentIndex = Math.floor((index - 1) / 2)
+
+    if (parentIndex < 0) {
+      return
+    }
+
+    if (this.values[parentIndex] < this.values[index]) {
+      swap(this.values, parentIndex, index)
+      return this.bubbleUp(parentIndex)
+    }
+  }
+
+  // sink value down if smaller than either of it's children
+  sinkDown(index) {
+    const length = this.values.length
+
+    const leftIndex = Math.floor(2 * index + 1)
+    const rightIndex = Math.floor(2 * index + 2)
+
+    let leftVal = null
+    let rightVal = null
+
+    if (leftIndex < length) {
+      leftVal = this.values[leftIndex]
+    }
+
+    if (rightIndex < length) {
+      rightVal = this.values[rightIndex]
+    }
+
+    const childValue = Math.max(rightVal, leftVal)
+
+    if (!childValue) {
+      return
+    }
+
+    let swapIndex = leftIndex
+
+    if (childValue === this.values[rightIndex]) {
+      swapIndex = rightIndex
+    }
+
+    if (this.values[index] < this.values[swapIndex]) {
+      swap(this.values, swapIndex, index)
+      return this.sinkDown(swapIndex)
+    }
+
+    return index
+  }
+
   insert(val) {
+    console.log(val)
     if (!val) {
       return null
     }
-
     this.values.push(val)
 
-    const bubbleUp = (index) => {
-      const parentIndex = Math.floor((index - 1) / 2)
+    return this.bubbleUp(this.values.length - 1)
+  }
 
-      if (this.values[parentIndex] < val) {
-        swap(this.values, parentIndex, index)
-        return bubbleUp(parentIndex)
-      }
-    }
+  extractMax() {
+    const max = this.values.shift()
+    const newMax = this.values.pop()
+    this.values.unshift(newMax)
 
-    return bubbleUp(this.values.length - 1)
+    this.sinkDown(0)
+
+    return max
   }
 }
 
 const heap = new MaxBinaryHeap()
 
 heap.insert(55)
-heap.insert(44)
+heap.insert(45)
 heap.insert(108)
+heap.insert(43)
 heap.insert(2)
+heap.insert(1777)
+
+heap.extractMax()
+heap.insert(999)
+
+debugger
