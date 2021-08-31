@@ -78,12 +78,14 @@ class MaxBinaryHeap {
 
   extractMax() {
     const max = this.values.shift()
-    const newMax = this.values.pop()
-    this.values.unshift(newMax)
+    if (this.values.length > 0) {
+      const newMax = this.values.pop()
+      this.values.unshift(newMax)
 
-    this.sinkDown(0)
+      this.sinkDown(0)
 
-    return max
+      return max
+    }
   }
 }
 
@@ -95,7 +97,6 @@ heap.insert(108)
 heap.insert(43)
 heap.insert(2)
 heap.insert(1777)
-
 heap.extractMax()
 heap.insert(999)
 
