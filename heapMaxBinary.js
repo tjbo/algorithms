@@ -68,7 +68,6 @@ class MaxBinaryHeap {
   }
 
   insert(val) {
-    console.log(val)
     if (!val) {
       return null
     }

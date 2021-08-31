@@ -1,14 +1,14 @@
 // binary search tree
 // trees are a non-linear data structure
 // binary search trees - every node has only 2 nodes
-// the node the left is less than the node value
+// the node on the left is less than the node value
 // the node to the right is more than the node value
 // works like 'divide and conquer' or 'binary search' when searching
 // insertion = O(log n)
 // search = O(log n)
 // as tree doubles in size we only need one additional step
 // for a search or insert
-// above big O is not guranteeed though, if you had
+// above not about big O is not guranteeed though, if you had
 // a one sided tree you can have problems
 const Queue = require('./queueSinglyLinkedList')
 
@@ -160,5 +160,5 @@ console.log(search4)
 // wheres on a very deep tree depth will have higher space complexity
 
 // preOrder vs postOrder vs inOrder
-// inOrder is a good sort orde
+// inOrder is a good sort order
 // preOrder would be possible to re-create a tree as it was created
