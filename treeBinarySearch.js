@@ -1,8 +1,9 @@
 // binary search tree
-// every node has only 2 nodes
+// trees are a non-linear data structure
+// binary search trees - every node has only 2 nodes
 // the node the left is less than the node value
 // the node to the right is more than the node value
-// works like 'divide and conquer' when searching
+// works like 'divide and conquer' or 'binary search' when searching
 // insertion = O(log n)
 // search = O(log n)
 // as tree doubles in size we only need one additional step
