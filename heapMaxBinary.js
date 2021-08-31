@@ -1,12 +1,18 @@
-// heaps are just trees with special rules
-// a max binary heap will have nodes that have larger
-// numbers than the next branch of nodes
-// for a min binary heap the children will be smaller
-// no gurrantees about comparisons between sibling values
-// a binary heap is always compact, as left children are
+// 1. binary heaps are just heaps which are just trees with special rules
+// 2. binary heaps are either max or min binary heaps
+// with parent nodes being either bigger or smaller
+// 3. no gurrantees about comparisons between sibling values
+// 4. a binary heap is always compact, as left children are
 // always filled in first
-// these types of heaps are often used for priority queue
+// 5. these types of heaps are often used for priority queue
 // and graph traversal algorithims
+// 6. binary heaps are very good for insertion and deletion
+// 7. with a little math can be stored as array
+// 8. big o
+// insertion = O(log N)
+// deletion = O(log N)
+// search = O(N/2) -> O(N)
+
 const swap = require('./swap')
 
 class MaxBinaryHeap {
