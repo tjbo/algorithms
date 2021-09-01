@@ -1,15 +1,18 @@
 // binary search tree
-// trees are a non-linear data structure
-// binary search trees - every node has only 2 nodes
-// the node on the left is less than the node value
-// the node to the right is more than the node value
-// works like 'divide and conquer' or 'binary search' when searching
+// 1. trees are a non-linear data structure
+// 2. trees are graphs where any 2 nodes only have one path
+// 3. binary search trees - every node has only 2 nodes
+// 4. the node on the left is less than the node value, the node to the right
+// is more than the node value
+// 5. works like 'divide and conquer' or 'binary search' when searching
+// 6. Big O
 // insertion = O(log n)
 // search = O(log n)
-// as tree doubles in size we only need one additional step
-// for a search or insert
-// above not about big O is not guranteeed though, if you had
-// a one sided tree you can have problems
+// 7. as tree doubles in size we only need one additional step for a search or
+// insert
+// 8. Big O is not guranteeed though, if you had a one sided tree you can have
+// problems
+
 const Queue = require('./queueSinglyLinkedList')
 
 class Node {
