@@ -11,5 +11,5 @@ function productOfArray(arr) {
   return productOfArray(arr)
 }
 
-productOfArray([1, 2, 3]) // 60
+productOfArray([10, 2, 3]) // 60
 productOfArray([1, 2, 3]) // 6
