@@ -54,8 +54,39 @@ class Graph {
     for (let node in this.ajacencyList) {
       this.removeEdge(vertex, node)
     }
-
     delete this.ajacencyList[vertex]
+  }
+
+  // in depth first we follow every node
+  traverseDepthFirst(vertex) {
+    const visited = {}
+
+    const traverse = (node) => {
+      if (visited[true]) {
+        return
+      }
+
+      visited[node] = true
+
+      const edges =
+        this.ajacencyList[node] &&
+        this.ajacencyList[node].filter((_node) => {
+          return visited[_node] !== true
+        })
+
+      if (edges && !edges.length) {
+        return
+      }
+
+      for (let edge in edges) {
+        traverse(edges[edge])
+      }
+    }
+
+    traverse(vertex)
+    console.log(visited)
+
+    return visited
   }
 }
 
@@ -64,9 +95,16 @@ const graph = new Graph()
 graph.addVertex('Tokyo')
 graph.addVertex('Dallas')
 graph.addVertex('Montreal')
+graph.addVertex('Calgary')
+graph.addVertex('Vancouver')
+graph.addVertex('Boston')
+graph.addVertex('Mexico City')
 graph.addEdge('Tokyo', 'Dallas')
 graph.addEdge('Montreal', 'Dallas')
+graph.addEdge('Dallas', 'Boston')
+graph.addEdge('Boston', 'Vancouver')
+graph.addEdge('Calgary', 'Mexico City')
 
-graph.removeVertex('Tokyo')
+graph.traverseDepthFirst('Dallas')
 
 debugger
