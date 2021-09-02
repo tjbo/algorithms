@@ -25,3 +25,50 @@
 // 9. adjacency list can take up less space (in sparse graphs)
 // 10. adjacency list is faster to iterate over all edges
 // 11. adjacency list is slower to look up specific edge
+
+class Graph {
+  constructor() {
+    this.ajacencyList = {}
+  }
+
+  addVertex(vertex) {
+    this.ajacencyList[vertex] = this.ajacencyList[vertex] || []
+  }
+
+  addEdge(vertex1, vertex2) {
+    this.ajacencyList[vertex1].push(vertex2)
+    this.ajacencyList[vertex2].push(vertex1)
+  }
+
+  removeEdge(vertex1, vertex2) {
+    const remove = (v1, v2) => {
+      this.ajacencyList[v1] = this.ajacencyList[v2].filter((value) => {
+        return value !== v2
+      })
+    }
+    remove(vertex1, vertex2)
+    remove(vertex2, vertex1)
+  }
+
+  removeVertex(vertex) {
+    for (let node in this.ajacencyList) {
+      this.ajacencyList[node] = this.ajacencyList[node].filter((value) => {
+        return value !== vertex
+      })
+    }
+
+    delete this.ajacencyList[vertex]
+  }
+}
+
+const graph = new Graph()
+
+graph.addVertex('Tokyo')
+graph.addVertex('Dallas')
+graph.addVertex('Montreal')
+graph.addEdge('Tokyo', 'Dallas')
+graph.addEdge('Montreal', 'Dallas')
+
+graph.removeVertex('Tokyo')
+
+debugger
