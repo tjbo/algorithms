@@ -52,9 +52,7 @@ class Graph {
 
   removeVertex(vertex) {
     for (let node in this.ajacencyList) {
-      this.ajacencyList[node] = this.ajacencyList[node].filter((value) => {
-        return value !== vertex
-      })
+      this.removeEdge(vertex, node)
     }
 
     delete this.ajacencyList[vertex]
