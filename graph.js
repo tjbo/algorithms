@@ -75,9 +75,7 @@ class Graph {
       }
 
       for (let edge in edges) {
-        if (!visited[edges]) {
-          traverse(edges[edge])
-        }
+        traverse(edges[edge])
       }
     }
 
