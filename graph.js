@@ -62,10 +62,6 @@ class Graph {
     const visited = {}
 
     const traverse = (node) => {
-      if (visited[true]) {
-        return
-      }
-
       visited[node] = true
 
       const edges =
@@ -79,12 +75,13 @@ class Graph {
       }
 
       for (let edge in edges) {
-        traverse(edges[edge])
+        if (!visited[edges]) {
+          traverse(edges[edge])
+        }
       }
     }
 
     traverse(vertex)
-    console.log(visited)
 
     return visited
   }
