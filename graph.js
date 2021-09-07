@@ -62,6 +62,10 @@ class Graph {
     const visited = {}
 
     const traverse = (node) => {
+      if (!node) {
+        return null
+      }
+
       visited[node] = true
 
       const edges =
@@ -83,6 +87,45 @@ class Graph {
 
     return visited
   }
+
+  traverseDepthFirstIterative(node) {
+    const stack = []
+    const results = []
+
+    stack.push(node)
+
+    while (stack.length > 0) {
+      const nextNode = stack.pop()
+      if (!results.includes(nextNode)) {
+        results.push(nextNode)
+        for (let item of this.ajacencyList[nextNode]) {
+          if (!results.includes(item)) {
+            stack.push(item)
+          }
+        }
+      }
+    }
+    return results
+  }
+
+  traverseBreadthFirst(node) {
+    const queue = []
+    const results = []
+    queue.push(node)
+
+    while (queue.length) {
+      const _node = queue.shift()
+      if (!results.includes(_node)) {
+        results.push(_node)
+        for (let item of this.ajacencyList[_node]) {
+          if (!results.includes(item)) {
+            queue.push(item)
+          }
+        }
+      }
+    }
+    return results
+  }
 }
 
 const graph = new Graph()
@@ -96,10 +139,16 @@ graph.addVertex('Boston')
 graph.addVertex('Mexico City')
 graph.addEdge('Tokyo', 'Dallas')
 graph.addEdge('Montreal', 'Dallas')
+
+graph.addEdge('Tokyo', 'Montreal')
 graph.addEdge('Dallas', 'Boston')
+graph.addEdge('Montreal', 'Boston')
+graph.addEdge('Tokyo', 'Boston')
 graph.addEdge('Boston', 'Vancouver')
+graph.addEdge('Tokyo', 'Vancouver')
+graph.addEdge('Montreal', 'Vancouver')
 graph.addEdge('Calgary', 'Mexico City')
 
-graph.traverseDepthFirst('Dallas')
+graph.traverseBreadthFirst('Tokyo')
 
 debugger
