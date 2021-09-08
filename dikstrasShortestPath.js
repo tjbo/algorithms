@@ -45,13 +45,12 @@ class WeightedGraph {
         parent = previous[parent]
       }
 
-      if (!previous.length) {
-        return d
-      }
+      return d
     }
 
     while (queue.values.length > 0) {
       const _node = queue.dequeue()
+      visited.push(_node.value)
       if (_node.value !== endNode) {
         for (let n in this.ajacencyList[_node.value]) {
           if (!visited.includes(this.ajacencyList[_node.value][n].node)) {
@@ -66,7 +65,6 @@ class WeightedGraph {
           }
         }
       }
-      visited.push(_node.value)
     }
     return previous
   }
