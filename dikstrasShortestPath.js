@@ -1,3 +1,6 @@
+// an implementation of dijkstras shortest path between 2 nodes on a
+// weighted graph
+
 const PriorityQueue = require('./queuePriority')
 
 class WeightedGraph {
@@ -30,7 +33,7 @@ class WeightedGraph {
 
     queue.enqueue(startNode, 0)
 
-    const calculateDistance = (child, distance, parent) => {
+    const calculateDistanceFromParent = (distance, parent) => {
       let d = distance
 
       while (previous[parent]) {
@@ -53,7 +56,7 @@ class WeightedGraph {
         for (let n in this.ajacencyList[_node.value]) {
           if (!visited.includes(this.ajacencyList[_node.value][n].node)) {
             const _n = this.ajacencyList[_node.value][n]
-            const d = calculateDistance(_n.node, _n.distance, _node.value)
+            const d = calculateDistanceFromParent(_n.distance, _node.value)
 
             if (d < shortestDistance[_n.node]) {
               shortestDistance[_n.node] = d
